@@ -128,36 +128,53 @@ class _LiveReportState extends State<LiveReport> {
                             StringResource.updating,
                           ),
                         ),
+                        // Container(
+                        //   height: 370,
+                        //   child: Stack(
+                        //     children: [
+                        //       Padding(
+                        //         padding: const EdgeInsets.only(bottom: 20.0),
+                        //         child: Image.asset(
+                        //           Constant.WeatherImage[
+                        //                   bloc.weather.weather[0].icon] ??
+                        //               ImageResource.rain,
+                        //           fit: BoxFit.fill,
+                        //         ),
+                        //       ),
                         Container(
-                          height: 370,
-                          child: Stack(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 20.0),
-                                child: Image.asset(
-                                  Constant.WeatherImage[
-                                          bloc.weather.weather[0].icon] ??
-                                      ImageResource.rain,
-                                  fit: BoxFit.fill,
-                                ),
-                              ),
-                              Positioned(
-                                bottom: 0,
-                                left: 0,
-                                right: 0,
-                                child: Center(
-                                  child: GlowText(
-                                    bloc.weather.main.temp.toString() +
-                                        '\u00B0',
-                                    style: TextStyle(
-                                        fontSize: 60,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                              ),
-                            ],
+                          height: 300,
+                          child: Padding(
+                              padding: const EdgeInsets.only(bottom: 20.0),
+                              child: Image.asset(
+                                Constant.WeatherImage[
+                                        bloc.weather.weather[0].icon] ??
+                                    ImageResource.rain,
+                              )),
+                        ),
+
+                        Center(
+                          child: GlowText(
+                            bloc.weather.main.temp.toString() + '\u00B0',
+                            style: TextStyle(
+                                fontSize: 60, fontWeight: FontWeight.bold),
                           ),
                         ),
+
+                        // Positioned(
+                        //   bottom: 0,
+                        //   left: 0,
+                        //   right: 0,
+                        //   child: Center(
+                        //     child: GlowText(
+                        //       bloc.weather.main.temp.toString() +
+                        //           '\u00B0',
+                        //       style: TextStyle(
+                        //           fontSize: 60,
+                        //           fontWeight: FontWeight.bold),
+                        //     ),
+                        //   ),
+                        // ),
+
                         CustomText(bloc.weather.weather[0].description,
                             fontSize: 20, fontWeight: FontWeight.bold),
                         CustomText(
