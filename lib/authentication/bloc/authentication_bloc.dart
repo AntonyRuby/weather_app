@@ -1,8 +1,6 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
-
+import 'package:weather_app/utils/base_equatable.dart';
 part 'authentication_event.dart';
 part 'authentication_state.dart';
 
@@ -13,5 +11,9 @@ class AuthenticationBloc
   @override
   Stream<AuthenticationState> mapEventToState(
     AuthenticationEvent event,
-  ) async* {}
+  ) async* {
+    if (event is AppStartedEvent) {
+      yield AuthenticationAuthenticated();
+    }
+  }
 }

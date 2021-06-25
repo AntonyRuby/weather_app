@@ -1,13 +1,8 @@
 part of 'authentication_bloc.dart';
 
-abstract class AuthenticationEvent extends Equatable {
-  const AuthenticationEvent();
+class AuthenticationEvent extends BaseEquatable {}
 
-  @override
-  List<Object> get props => [];
-}
-
-class AppStarted extends AuthenticationEvent {
+class AppStartedEvent extends AuthenticationEvent {
   @override
   String toString() => 'AppStarted';
 }

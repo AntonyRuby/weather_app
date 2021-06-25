@@ -1,25 +1,26 @@
 import 'dart:async';
-import 'dart:convert';
+
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:weather_app/http/repository/home_repository.dart';
 import 'package:weather_app/models/open_weather_api.dart';
 import 'package:weather_app/utils/base_equatable.dart';
-part 'live_report_event.dart';
-part 'live_report_state.dart';
 
-class LiveReportBloc extends Bloc<LiveReportEvent, LiveReportState> {
-  LiveReportBloc() : super(LiveReportInitialState());
+part 'weather_event.dart';
+part 'weather_state.dart';
+
+class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
+  WeatherBloc() : super(WeatherInitialState());
   String message;
   OpenWeatherApi weather;
   String cityName;
 
   @override
-  Stream<LiveReportState> mapEventToState(
-    LiveReportEvent event,
+  Stream<WeatherState> mapEventToState(
+    WeatherEvent event,
   ) async* {
-    if ((event is LiveReportInitialEvent) ||
-        (event is LiveReportRefreshEvent)) {
-      yield LiveReportloadingState();
+    if ((event is WeatherInitialEvent) || (event is WeatherRefreshEvent)) {
+      yield WeatherLoadingState();
 
       Map<String, dynamic> weatherData =
           await getWeather(cityName ?? "Chennai");
@@ -28,10 +29,10 @@ class LiveReportBloc extends Bloc<LiveReportEvent, LiveReportState> {
         Map<String, dynamic> jsonData = weatherData["data"];
         weather = OpenWeatherApi.fromJson(jsonData);
 
-        yield LiveReportLoadedState();
+        yield WeatherLoadedState();
       } else {
         message = weatherData["data"];
-        yield LiveReportFailureState();
+        yield WeatherFailureState();
       }
     }
   }

@@ -1,11 +1,6 @@
 part of 'authentication_bloc.dart';
 
-abstract class AuthenticationState extends Equatable {
-  const AuthenticationState();
-
-  @override
-  List<Object> get props => [];
-}
+class AuthenticationState extends BaseEquatable {}
 
 class AuthenticationInitial extends AuthenticationState {}
 
@@ -27,13 +22,6 @@ class AuthenticationAuthenticated extends AuthenticationState {
   @override
   String toString() {
     return "AuthenticationAuthenticated";
-  }
-}
-
-class SplashScreenState extends AuthenticationState {
-  @override
-  String toString() {
-    return "SplashScreenState";
   }
 }
 
