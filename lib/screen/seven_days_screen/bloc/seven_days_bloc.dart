@@ -2,9 +2,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:weather_app/http/repository/home_repository.dart';
 import 'package:weather_app/models/seven_days_models/seven_days.dart';
-import 'package:weather_app/models/weather_models/open_weather_api.dart';
 import 'package:weather_app/utils/base_equatable.dart';
-
 part 'seven_days_event.dart';
 part 'seven_days_state.dart';
 

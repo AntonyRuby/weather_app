@@ -22,13 +22,19 @@ class Main {
   });
 
   factory Main.fromJson(Map<String, dynamic> json) => Main(
-        temp: json['temp'] as double,
+        // temp: json['temp'] as double,
+        temp: json['temp'] is int
+            ? (json['temp'] as int).toDouble()
+            : json['temp'],
         // feelsLike: json['feels_like'] as double,
         feelsLike: json['feelsLike'] is int
             ? (json['feelsLike'] as int).toDouble()
             : json['feelsLike'],
 
-        tempMin: json['temp_min'] as double,
+        // tempMin: json['temp_min'] as double,
+        tempMin: json['tempMin'] is int
+            ? (json['tempMin'] as int).toDouble()
+            : json['tempMin'],
         tempMax: json['temp_max'] as double,
         pressure: json['pressure'] as int,
         seaLevel: json['sea_level'] as int,

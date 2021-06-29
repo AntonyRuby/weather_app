@@ -217,7 +217,6 @@ class _SevenDaysScreenState extends State<SevenDaysScreen> {
                                                     .icon] ??
                                                 ImageResource.rain,
                                             height: 25,
-                                            width: 25,
                                           ),
                                           Padding(
                                             padding: const EdgeInsets.only(
