@@ -31,6 +31,7 @@ dependencies:
   flutter_glow: ^0.2.0
   geolocator: ^7.1.1
   http: ^0.13.3
+  intl: ^0.17.0
   lint: ^1.5.3
 
 dev_dependencies:

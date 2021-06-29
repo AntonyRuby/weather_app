@@ -43,8 +43,7 @@ class _SevenDaysScreenState extends State<SevenDaysScreen> {
                 return Scaffold(
                     backgroundColor: ColorResource.black,
                     body: SafeArea(
-                        child: SingleChildScrollView(
-                            child: Column(children: [
+                        child: Column(children: [
                       Container(
                         height: MediaQuery.of(context).size.height - 500,
                         decoration: BoxDecoration(
@@ -186,154 +185,77 @@ class _SevenDaysScreenState extends State<SevenDaysScreen> {
                       ),
                       // Details
 
-                      // _reportsWidget(),
-
-                      _reportsWidget(
-                        StringResource.mon,
-                        ImageResource.rain,
-                        StringResource.today,
-                        StringResource.today,
-                      ),
-                      _reportsWidget(
-                        StringResource.tue,
-                        ImageResource.rain,
-                        StringResource.today,
-                        StringResource.today,
-                      ),
-                      _reportsWidget(
-                        StringResource.wed,
-                        ImageResource.sunny,
-                        StringResource.today,
-                        StringResource.today,
-                      ),
-                      _reportsWidget(
-                        StringResource.thu,
-                        ImageResource.thunder,
-                        StringResource.today,
-                        StringResource.today,
-                      ),
-                      _reportsWidget(
-                        StringResource.fri,
-                        ImageResource.rain,
-                        StringResource.today,
-                        StringResource.today,
-                      ),
-                      _reportsWidget(
-                        StringResource.sat,
-                        ImageResource.rain,
-                        StringResource.today,
-                        StringResource.today,
-                      ),
-                      _reportsWidget(
-                        StringResource.sun,
-                        ImageResource.rain,
-                        StringResource.today,
-                        StringResource.today,
-                      ),
-
-                      // Expanded(
-                      //   child: ListView.builder(
-                      //     itemCount: bloc.weather.list.length,
-                      //     itemBuilder: (BuildContext context, int index) {
-                      //       return Padding(
-                      //         padding: const EdgeInsets.only(top: 30),
-                      //         child: Row(
-                      //           mainAxisAlignment:
-                      //               MainAxisAlignment.spaceAround,
-                      //           children: [
-                      //             CustomText(
-                      //               bloc.weather.list[index].dtTxt,
-                      //               fontSize: 14,
-                      //               color: ColorResource.white54,
-                      //             ),
-                      //             Row(
-                      //               children: [
-                      //                 // Image.asset(
-                      //                 //   // image,
-                      //                 //   height: 25,
-                      //                 //   width: 25,
-                      //                 // ),
-                      //                 SizedBox(width: 5),
-                      //                 CustomText(
-                      //                   bloc.weather.list[0].weather[0].main,
-                      //                   fontSize: 14,
-                      //                   color: ColorResource.white54,
-                      //                 ),
-                      //               ],
-                      //             ),
-                      //             Row(
-                      //               children: [
-                      //                 CustomText(
-                      //                   bloc.weather.list[index].main.tempMax
-                      //                       .toString(),
-                      //                   fontSize: 14,
-                      //                   color: ColorResource.white54,
-                      //                 ),
-                      //                 SizedBox(width: 2),
-                      //                 CustomText(
-                      //                   bloc.weather.list[index].main.tempMin
-                      //                       .toString(),
-                      //                   fontSize: 14,
-                      //                   color: ColorResource.white54,
-                      //                 ),
-                      //               ],
-                      //             ),
-                      //           ],
-                      //         ),
-                      //       );
-                      //     },
-                      //   ),
-                      // )
-                    ]))));
+                      Expanded(
+                          child: Container(
+                        child: ListView.builder(
+                            itemCount: bloc.weather.list.length,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.only(top: 30),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    CustomText(
+                                      bloc.weather.list[index].dtTxt.toString(),
+                                      fontSize: 14,
+                                      color: ColorResource.white54,
+                                    ),
+                                    SizedBox(
+                                      width: 100,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Image.asset(
+                                            Constants.WeatherImage[bloc
+                                                    .weather
+                                                    .list[index]
+                                                    .weather[0]
+                                                    .icon] ??
+                                                ImageResource.rain,
+                                            height: 25,
+                                            width: 25,
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 8.0),
+                                            child: CustomText(
+                                              bloc.weather.list[index]
+                                                  .weather[0].main,
+                                              fontSize: 14,
+                                              color: ColorResource.white54,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Row(
+                                      children: [
+                                        CustomText(
+                                          bloc.weather.list[index].main.tempMax
+                                              .toString(),
+                                          fontSize: 14,
+                                          color: ColorResource.white54,
+                                        ),
+                                        // SizedBox(width: 2),
+                                        // CustomText(
+                                        //   bloc.weather.list[0].main.tempMin
+                                        //       .toString(),
+                                        //   fontSize: 14,
+                                        //   color: ColorResource.white54,
+                                        // ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }),
+                      ))
+                    ])));
               } else {
                 return Container();
               }
             }));
-  }
-
-  Widget _reportsWidget(String day, String image, String temp, String temp1) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 30),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          CustomText(
-            bloc.weather.list[0].dtTxt,
-            fontSize: 14,
-            color: ColorResource.white54,
-          ),
-          Row(
-            children: [
-              Image.asset(
-                image,
-                height: 25,
-                width: 25,
-              ),
-              SizedBox(width: 5),
-              CustomText(
-                bloc.weather.list[0].weather[0].main,
-                fontSize: 14,
-                color: ColorResource.white54,
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              CustomText(
-                bloc.weather.list[0].main.tempMax.toString(),
-                fontSize: 14,
-                color: ColorResource.white54,
-              ),
-              SizedBox(width: 2),
-              // CustomText(
-              //   bloc.weather.list[0].main.tempMin.toString(),
-              //   fontSize: 14,
-              //   color: ColorResource.white54,
-              // ),
-            ],
-          ),
-        ],
-      ),
-    );
   }
 }
