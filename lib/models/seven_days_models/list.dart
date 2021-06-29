@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 import 'clouds.dart';
 import 'main.dart';
 import 'rain.dart';
@@ -14,7 +16,7 @@ class DataList {
   int visibility;
   double pop;
   Sys sys;
-  String dtTxt;
+  DateTime dtTxt;
   Rain rain;
 
   DataList({
@@ -49,7 +51,7 @@ class DataList {
         sys: json['sys'] == null
             ? null
             : Sys.fromJson(json['sys'] as Map<String, dynamic>),
-        dtTxt: json['dt_txt'] as String,
+        dtTxt: new DateFormat("yyyy-MM-dd HH:mm:ss").parse(json['dt_txt']),
         rain: json['rain'] == null
             ? null
             : Rain.fromJson(json['rain'] as Map<String, dynamic>),

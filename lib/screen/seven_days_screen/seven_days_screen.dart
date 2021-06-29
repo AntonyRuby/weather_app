@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_glow/flutter_glow.dart';
+import 'package:intl/intl.dart';
 import 'package:weather_app/screen/seven_days_screen/bloc/seven_days_bloc.dart';
 import 'package:weather_app/utils/color_resources.dart';
 import 'package:weather_app/utils/constant.dart';
@@ -197,7 +198,8 @@ class _SevenDaysScreenState extends State<SevenDaysScreen> {
                                       MainAxisAlignment.spaceAround,
                                   children: [
                                     CustomText(
-                                      bloc.weather.list[index].dtTxt.toString(),
+                                      DateFormat('E h a').format(
+                                          bloc.weather.list[index].dtTxt),
                                       fontSize: 14,
                                       color: ColorResource.white54,
                                     ),
