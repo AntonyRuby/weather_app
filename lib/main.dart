@@ -40,6 +40,7 @@ class _MyAppState extends State<MyApp> {
                   displayColor: Colors.blue,
                 )),
         debugShowCheckedModeBanner: false,
+        onGenerateRoute: getRoute,
         home: addAuthBloc(
           context,
           WeatherScreen(),

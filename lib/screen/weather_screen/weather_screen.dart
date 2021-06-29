@@ -2,16 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_glow/flutter_glow.dart';
-import 'package:weather_app/authentication/bloc/authentication_bloc.dart';
-import 'package:weather_app/screen/seven_days_screen/bloc/seven_days_bloc.dart';
-import 'package:weather_app/screen/seven_days_screen/seven_days_screen.dart';
 import 'package:weather_app/utils/color_resources.dart';
 import 'package:weather_app/utils/constant.dart';
 import 'package:weather_app/utils/images_resources.dart';
 import 'package:weather_app/utils/string_resources.dart';
 import 'package:weather_app/widget/custom_text.dart';
 import 'package:weather_app/widget/details.dart';
-
 import '../../router.dart';
 import 'bloc/weather_bloc.dart';
 
@@ -25,8 +21,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
   String dropdownValue = 'Chennai';
   @override
   void initState() {
-    // bloc = WeatherBloc()..add(WeatherInitialEvent());
-    bloc = BlocProvider.of<WeatherBloc>(context);
+    bloc = WeatherBloc()..add(WeatherInitialEvent());
+    // bloc = BlocProvider.of<WeatherBloc>(context);
     super.initState();
   }
 
@@ -145,7 +141,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                           padding: const EdgeInsets.only(
                                               bottom: 20.0),
                                           child: Image.asset(
-                                            Constant.WeatherImage[bloc
+                                            Constants.WeatherImage[bloc
                                                     .weather.weather[0].icon] ??
                                                 ImageResource.rain,
                                           )),
